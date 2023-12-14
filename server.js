@@ -31,6 +31,40 @@ db.once('open', () => {
 
 const DrivingEvent = require('./models/DrivingEvent');
 const Alert = require('./models/Alert');
+const LocationTypeThreshold = require('./models/LocationTypeThreshold');
+
+cron.schedule('*/5 * * * *', async () => {
+    try {
+        const thresholdConfigs = await LocationTypeThreshold.find().exec();
+
+        for (const config of thresholdConfigs) {
+            const { locationType, threshold } = config;
+
+            const unsafeEvents = await DrivingEvent.find({
+                location_type: locationType,
+                is_driving_safe: false,
+                timestamp: {
+                    $gte: DateTime.utc().minus({ minutes: 5 }).toISO(),
+                    $lte: DateTime.utc().toISO(),
+                },
+            }).exec();
+
+            if (unsafeEvents.length >= threshold) {
+                
+                const alert = new Alert({
+                    timestamp: DateTime.utc().toISO(),
+                    message: `Unsafe driving in ${locationType}. Threshold exceeded.`,
+                });
+                await alert.save();
+
+                console.log('Alert generated and saved to MongoDB:', alert);
+            }
+        }
+    } catch (err) {
+        console.error('Error running rule:', err);
+    }
+});
+
 
 app.post('/driving-event', async (req, res) => {
     const data = req.body;
