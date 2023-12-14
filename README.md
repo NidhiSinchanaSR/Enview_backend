@@ -5,13 +5,24 @@ The backend code for the Enview.ai project. It sets the context for the readers 
 ## Setup
 
 Clone this repo
+<br>
 `git clone`  repo link
+</br>
+<br>
 `cd Enview_backend`
+</br>
+<br>
 `npm install`
+</br>
+<br>
 `npm start`
+</br>
 
-This will start the backend. It will run on port 3000
-If U want to test. You can test that in Postman
+<br>This will start the backend. It will run on port 3000 </br>
+
+<br>If U want to test. You can test that in Postman</br>
+
+</br><a href="https://docs.google.com/document/d/1y9Dw6mWZg2XEJ9r2quRpMADCtYCmw0Ge1FgPqJR_aOk/edit" target="_blank">Google</a></br>
 
 ## Display
 
