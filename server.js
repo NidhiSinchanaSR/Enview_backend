@@ -4,7 +4,7 @@ const cors = require('cors');
 const { DateTime } = require('luxon');
 const { MongoClient } = require('mongodb');
 const mongoose = require('mongoose');
-require('dotenv').config(); // Load environment variables from .env file
+require('dotenv').config(); 
 
 const app = express();
 const port = 3000;
@@ -15,9 +15,9 @@ app.use(bodyParser.json());
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    tls: true, // Enable TLS/SSL
-    tlsAllowInvalidCertificates: true, // Allow invalid certificates (for testing purposes)
-    tlsAllowInvalidHostnames: true, // Allow invalid hostnames (for testing purposes)
+    tls: true, 
+    tlsAllowInvalidCertificates: true, 
+    tlsAllowInvalidHostnames: true, 
 });
 
 const db = mongoose.connection;
