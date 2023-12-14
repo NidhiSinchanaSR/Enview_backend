@@ -2,9 +2,8 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const { DateTime } = require('luxon');
-const { MongoClient } = require('mongodb');
 const mongoose = require('mongoose');
-require('dotenv').config(); 
+require('dotenv').config();
 
 const app = express();
 const port = 3000;
@@ -15,9 +14,9 @@ app.use(bodyParser.json());
 mongoose.connect(process.env.MONGODB_URI, {
     useNewUrlParser: true,
     useUnifiedTopology: true,
-    tls: true, 
-    tlsAllowInvalidCertificates: true, 
-    tlsAllowInvalidHostnames: true, 
+    tls: true,
+    tlsAllowInvalidCertificates: true,
+    tlsAllowInvalidHostnames: true,
 });
 
 const db = mongoose.connection;
@@ -60,7 +59,22 @@ app.get('/alerts', async (req, res) => {
     }
 });
 
-// Rest of your code...
+app.get('/alerts/:alert_id', async (req, res) => {
+    const alertId = req.params.alert_id;
+
+    try {
+        const alert = await Alert.findById(alertId).exec();
+
+        if (!alert) {
+            return res.status(404).json({ status: 'error', message: 'Alert not found' });
+        }
+
+        res.json(alert);s
+    } catch (err) {
+        console.error('Error fetching alert from MongoDB:', err);
+        res.status(500).json({ status: 'error', message: 'Internal Server Error' });
+    }
+});
 
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
