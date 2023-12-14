@@ -22,7 +22,7 @@ Clone this repo
 
 <br>If U want to test. You can test that in Postman</br>
 
-</br><a href="https://docs.google.com/document/d/1y9Dw6mWZg2XEJ9r2quRpMADCtYCmw0Ge1FgPqJR_aOk/edit" target="_blank">Google</a></br>
+</br>YOu can see the <a href="https://docs.google.com/document/d/1y9Dw6mWZg2XEJ9r2quRpMADCtYCmw0Ge1FgPqJR_aOk/edit" target="_blank">Report here</a></br>
 
 ## Display
 
