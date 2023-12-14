@@ -28,7 +28,7 @@ Clone this repo
 
 ![image](https://github.com/NidhiSinchanaSR/Enview_backend/assets/93388995/9137c389-cf77-4052-84ef-34b1d91d7c4b)
 
-This because in my model only schema is made with no entry. But althorugh in frontend I have put some random unique id like this
+This because in my model only schema is made with no entry. But although in frontend I have put some random unique id like this
 
 ![image](https://github.com/NidhiSinchanaSR/Enview_backend/assets/93388995/24238a63-9eca-4f7e-881e-f398ccacedf7)
 
